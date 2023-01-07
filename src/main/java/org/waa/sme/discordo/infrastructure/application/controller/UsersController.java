@@ -21,15 +21,42 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Date;
 import java.util.Optional;
 
+/*
+    liste des fonctions :
+    - Créer un Users
+    - Supprimer un Users
+    - Recuperer un Users
+    - Afficher tout les users
+    - Recuperer la liste amis
+ */
+
 @RestController
 public class UsersController {
     @Autowired
     private UsersService usersService;
 
-    @PostMapping("/usersList")
-    public UsersService createUsers(@RequestBody UsersService usersService) {
-        return usersService.saveUsersService(usersService);
+    @PostMapping("/users")
+    public Users createUsers(@RequestBody Users users) {
+        return usersService.saveUsers(users);
     }
 
+    @DeleteMapping("/users/{id}")
+    public void deleteUsers(@PathVariable Long id) {
+        usersService.deleteUsers(id);
+    }
 
+    @GetMapping("/users/{id}")
+    public Users getUsers(@PathVariable Long id) {
+        return usersService.getUsers(id).get();
+    }
+
+    @GetMapping("/users")
+    public Iterable<Users> getUsers() {
+        return usersService.getAllUsers();
+    }
+
+    @GetMapping("/users/listeAmis")
+    public Iterable<Users> getListeAmis(@PathVariable Long idUsers) {
+        return (Iterable<Users>) usersService.getListeAmis(idUsers);
+    }
 }

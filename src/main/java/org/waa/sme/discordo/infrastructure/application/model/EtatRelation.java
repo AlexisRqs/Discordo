@@ -17,7 +17,7 @@ import javax.persistence.Id;
 @Table(name = "EtatRelation")
 @Entity
 public class EtatRelation implements Serializable {
-@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

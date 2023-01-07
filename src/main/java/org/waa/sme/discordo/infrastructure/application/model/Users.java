@@ -12,7 +12,7 @@ import java.util.Date;
 @Data
 @Table(name = "Users")
 @Entity
-public class Users implements Serializable{
+public class    Users implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +28,7 @@ public class Users implements Serializable{
     @ToString.Exclude
     @JsonBackReference
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "listeAmis")
+    @JoinTable(name = "ListeAmis")
     private ListeAmis listeAmis ;
 
 }
