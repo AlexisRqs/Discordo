@@ -40,6 +40,9 @@ public class ListeAmisService {
         return 0;
     }
 
+
+
+
     public String getTopic(Long idUsers, Long idUsers2) {
         Optional<Users> users = usersService.getUsers(idUsers);
         ListeAmis listeAmis = usersService.getListeAmis(idUsers);

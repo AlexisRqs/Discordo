@@ -19,8 +19,8 @@ public class ListeAmisController {
     @Autowired
     private ListeAmisService listeAmisService;
 
-    @PostMapping("/users/{id}/listeAmis")
-    public ListeAmis createListeAmis(@RequestBody ListeAmis listeAmis, @PathVariable Long idUsers) {
+    @PostMapping("/users/{id}/listeAmis/ajout")
+    public ListeAmis ajoutListeAmis(@RequestBody ListeAmis listeAmis, @PathVariable Long idUsers) {
         return listeAmisService.saveListeAmis(listeAmis, idUsers);
     }
 
@@ -28,6 +28,7 @@ public class ListeAmisController {
     public int getEtatRelation(@PathVariable Long idUsers, @PathVariable Long idUsers2) {
         return listeAmisService.getEtatRelation(idUsers, idUsers2);
     }
+
 
 
 }

@@ -28,8 +28,14 @@ public class UsersService {
         return usersRepository.findById(id);
     }
 
-    public Iterable<Users> getAllUsers() {
-        return usersRepository.findAll();
+    public Long connexion(String email, String password) {
+        Iterable<Users> Allusers = usersRepository.findAll();
+        for (Users users : Allusers) {
+            if (users.getMail().equals(email) && users.getPassword().equals(password)) {
+                return users.getId();
+            }
+        }
+        return null;
     }
 
     public ListeAmis getListeAmis(final Long idUsers) {
