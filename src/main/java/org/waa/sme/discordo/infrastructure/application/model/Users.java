@@ -18,11 +18,17 @@ public class    Users implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "nom")
     private String nom;
+    @Column(name = "prenom")
     private String prenom;
+    @Column(name = "mail")
     private String mail;
+    @Column(name = "password")
     private String password;
-    private String banni;;
+    @Column(name = "banni")
+    private String banni;
+    @Column(name = "dateNaissance")
     private String dateNaissance;
 
     @ToString.Exclude

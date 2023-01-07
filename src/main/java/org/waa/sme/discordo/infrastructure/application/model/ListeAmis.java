@@ -21,18 +21,20 @@ public class ListeAmis implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "idUsers1")
     private int idUser1;
+    @Column(name = "idUsers2")
     private int idUser2;
 
     @ToString.Exclude
     @JsonBackReference
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "etatRelation")
+    @JoinTable(name = "etatRelation")
     private EtatRelation etatRelation ;
 
     @ToString.Exclude
     @JsonBackReference
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idTopic")
+    @JoinTable(name = "idTopic")
     private IdTopic idTopic ;
 }
