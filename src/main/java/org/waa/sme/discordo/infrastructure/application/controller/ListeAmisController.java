@@ -20,13 +20,10 @@ public class ListeAmisController {
     @Autowired
     private ListeAmisService listeAmisService;
 
-
-
     @PostMapping("/users/{id}/listeAmis")
     public ListeAmis createListeAmis(@RequestBody ListeAmis listeAmis, @PathVariable Long idUsers) {
         return listeAmisService.saveListeAmis(listeAmis, idUsers);
     }
-
 
 
 }
