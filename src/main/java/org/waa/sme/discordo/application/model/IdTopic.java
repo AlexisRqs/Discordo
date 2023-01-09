@@ -1,16 +1,9 @@
-package org.waa.sme.discordo.infrastructure.application.model;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+package org.waa.sme.discordo.application.model;
+
 import lombok.Data;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 @Data
 @Table(name = "IdTopic")
@@ -20,6 +13,11 @@ public class IdTopic implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "id_lieeIdTopic")
+    private Long id_lieeIdTopic;
+
+    @Column(name = "path")
     private String path;
+    @Column(name = "msgEnAttente")
     private String msgEnAttente;
 }

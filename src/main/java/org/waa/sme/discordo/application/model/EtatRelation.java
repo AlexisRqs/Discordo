@@ -1,17 +1,9 @@
-package org.waa.sme.discordo.infrastructure.application.model;
+package org.waa.sme.discordo.application.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 @Data
 @Table(name = "EtatRelation")
@@ -19,10 +11,16 @@ import javax.persistence.Id;
 public class EtatRelation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idEtatRelation;
 
+    @Column(name = "id_lieeEtatRelation")
+    private Long id_lieeEtatRelation;
+
+    @Column(name = "enAttente")
     private Boolean enAttente;
+    @Column(name = "accepte")
     private Boolean accepte;
+    @Column(name = "bloquee")
     private Boolean bloquee;
 
 }

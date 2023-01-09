@@ -1,18 +1,18 @@
-package org.waa.sme.discordo.infrastructure.application.model;
+package org.waa.sme.discordo.application.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Table(name = "Users")
 @Entity
-public class    Users implements Serializable{
+public class Users implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,14 +27,14 @@ public class    Users implements Serializable{
     @Column(name = "password")
     private String password;
     @Column(name = "banni")
-    private String banni;
-    @Column(name = "dateNaissance")
-    private String dateNaissance;
+    private Boolean banni;
+    @Column(name = "date_Naissance")
+    private String date_Naissance;
 
     @ToString.Exclude
     @JsonBackReference
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinTable(name = "ListeAmis")
-    private ListeAmis listeAmis ;
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "ListeAmis", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "idUsers1"))
+    private List<ListeAmis> listeAmis = new ArrayList<ListeAmis>();
 
 }
