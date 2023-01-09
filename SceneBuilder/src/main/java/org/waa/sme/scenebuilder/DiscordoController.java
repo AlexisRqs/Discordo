@@ -3,12 +3,12 @@ package org.waa.sme.scenebuilder;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class HelloController {
+public class DiscordoController {
     @FXML
     private Label welcomeText;
 
     @FXML
     protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+        welcomeText.setText("Bienvenue sur Discordo !");
     }
 }
