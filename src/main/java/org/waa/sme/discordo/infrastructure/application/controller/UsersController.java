@@ -53,7 +53,6 @@ public class UsersController {
         return usersService.getUsersMail(email).get();
     }
 
-    //FONCTION TESTS ABANDONNEES
     /*@GetMapping("/users/listeAmis")
     public Iterable<Users> getListeAmis(@PathVariable Long idUsers) {
         return (Iterable<Users>) usersService.getListeAmis(idUsers);

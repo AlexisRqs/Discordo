@@ -2,7 +2,7 @@ package org.waa.sme.discordo.infrastructure.application.model;
 
 import lombok.Data;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Data

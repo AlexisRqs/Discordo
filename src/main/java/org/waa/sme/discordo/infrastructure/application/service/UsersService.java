@@ -17,6 +17,7 @@ public class UsersService {
     @Autowired
     private UsersRepository usersRepository;
 
+
     public Users saveUsers(Users users) {
         Users savedUsers = usersRepository.save(users);
         return savedUsers;
@@ -50,7 +51,6 @@ public class UsersService {
         return null;
     }
 
-    //FONCTION TESTS ABANDONNEES
     /*public ListeAmis getListeAmis(final Long idUsers) {
         return usersRepository.findById(idUsers).get().getListeAmis();
     }*/
