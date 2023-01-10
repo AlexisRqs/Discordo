@@ -11,7 +11,7 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 
 @Data
-@Table(name = "Users")
+@Table(name = "users")
 @Entity
 public class Users implements Serializable{
 
@@ -29,13 +29,13 @@ public class Users implements Serializable{
     private String password;
     @Column(name = "banni")
     private Boolean banni;
-    @Column(name = "date_Naissance")
+    @Column(name = "date_naissance")
     private String date_Naissance;
+    @Column(name = "ip")
+    private String ip;
+    @Column(name = "port")
+    private Short port;
 
-    @ToString.Exclude
-    @JsonBackReference
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "ListeAmis", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "idUsers1"))
-    private List<ListeAmis> listeAmis = new ArrayList<ListeAmis>();
-
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "users")
+    private List<ListeAmis> listeAmis;
 }

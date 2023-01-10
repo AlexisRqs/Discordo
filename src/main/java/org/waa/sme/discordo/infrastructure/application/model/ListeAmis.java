@@ -10,26 +10,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@Table(name = "ListeAmis")
+@Table(name = "liste_amis")
 @Entity
 public class ListeAmis implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "idUsers1")
-    private Long idUser1;
-    @Column(name = "idUsers2")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_users_1")
+    private Users users;
+
+    /*@Column(name = "id_users_1")
+    private Long idUser1;*/
+
+    @Column(name = "id_users_2")
     private Long idUser2;
 
-    @Column(name = "enAttente")
+    @Column(name = "en_attente")
     private Boolean enAttente;
     @Column(name = "accepte")
     private Boolean accepte;
     @Column(name = "bloquee")
     private Boolean bloquee;
 
-    @Column(name = "idBloqueur")
+    @Column(name = "id_bloqueur")
     private Long idBloqueur = null;
 /*
     @ToString.Exclude
@@ -37,11 +42,14 @@ public class ListeAmis implements Serializable {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinTable(name = "EtatRelation", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "id_lieeEtatRelation"))
     private EtatRelation etatRelation;
+
 */
+
+
     @ToString.Exclude
     @JsonBackReference
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinTable(name = "IdTopic", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "id_lieeIdTopic"))
+    @JoinTable(name = "id_topic", joinColumns = @JoinColumn(name = "id_topic_id"), inverseJoinColumns = @JoinColumn(name = "id_liee_id_topic"))
     private IdTopic idTopic;
 
 }

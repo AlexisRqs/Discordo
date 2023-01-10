@@ -5,10 +5,14 @@ import org.springframework.web.bind.annotation.*;
 import org.waa.sme.discordo.infrastructure.application.model.ListeAmis;
 import org.waa.sme.discordo.infrastructure.application.service.ListeAmisService;
 
+import java.util.List;
+
 
 /*
     liste des fonctions :
-    - Créer une liste d'amis
+    - Créer une demande d'ami par le mail
+    - Verifie etat de relation (deja amis, en attente, bloqué)
+    - Afficher la liste d'ami
  */
 
 @RestController
@@ -17,10 +21,18 @@ public class ListeAmisController {
     private ListeAmisService listeAmisService;
 
     @GetMapping("/users/{idUsers}/listeAmis")
-    public ListeAmis getListeAmis(@PathVariable Long idUsers) {
+    public List<ListeAmis> getListeAmis(@PathVariable Long idUsers) {
         return listeAmisService.getListeAmis(idUsers);
     }
+    @GetMapping("/users/{idUsers}/DemandeAmis")
+    public ListeAmis getDemandeAmis(@PathVariable Long idUsers) {
+        return listeAmisService.getDemandeAmis(idUsers);
+    }
 
+    @PutMapping("/users/{idUsers1}/ajoutAmisIdBis/{idUsers2}")
+    public String ajoutAmisIdBis(@PathVariable Long idUsers1, @PathVariable Long idUsers2) {
+        return listeAmisService.ajoutAmisIdBis(idUsers1, idUsers2);
+    }
     @PutMapping("/users/{idUsers1}/ajoutAmisId/{idUsers2}")
     public String ajoutAmisId(@PathVariable Long idUsers1, @PathVariable Long idUsers2) {
         return listeAmisService.ajoutAmisId(idUsers1, idUsers2);
