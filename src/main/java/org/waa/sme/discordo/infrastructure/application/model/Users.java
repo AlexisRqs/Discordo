@@ -44,4 +44,6 @@ public class Users {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "users")
     private List<ListeAmis> listeAmis;
+   /* @OneToMany(fetch = FetchType.LAZY, mappedBy = "users2")
+    private List<ListeAmis> listeAmis2;*/
 }

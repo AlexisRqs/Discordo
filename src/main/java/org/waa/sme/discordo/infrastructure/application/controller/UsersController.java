@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import org.waa.sme.discordo.infrastructure.application.model.Users;
 import org.waa.sme.discordo.infrastructure.application.service.UsersService;
 
+import java.util.List;
 import java.util.Optional;
 
 /*
@@ -32,9 +33,9 @@ public class UsersController {
     }
 
     @GetMapping("/connexion/{email}/{password}")
-    public Users connexion(@PathVariable String email, @PathVariable String password) {
+    public Long connexion(@PathVariable String email, @PathVariable String password) {
         System.out.println("email : " + email + " password : " + password);
-        return usersService.connexion(email, password).get();
+        return usersService.connexion(email, password);
     }
 
     @DeleteMapping("/users/{id}")
@@ -45,6 +46,11 @@ public class UsersController {
     @GetMapping("/users/{id}")
     public Users getUsers(@PathVariable Long id) {
         return usersService.getUsers(id).get();
+    }
+
+    @GetMapping("/usersBis/{id}")
+    public List<String> getUsersBis(@PathVariable Long id) {
+        return usersService.getUsersBis(id);
     }
 
     @GetMapping("/usersPrecis/{email}")

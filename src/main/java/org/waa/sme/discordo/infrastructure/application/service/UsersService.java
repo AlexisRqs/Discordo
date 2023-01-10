@@ -3,11 +3,11 @@ package org.waa.sme.discordo.infrastructure.application.service;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.waa.sme.discordo.infrastructure.application.model.ListeAmis;
 import org.waa.sme.discordo.infrastructure.application.model.Users;
 import org.waa.sme.discordo.infrastructure.application.repository.UsersRepository;
 
-import org.waa.sme.discordo.infrastructure.application.repository.ListeAmisRepository;
+import java.util.ArrayList;
+import java.util.List;
 
 import java.util.Optional;
 
@@ -31,6 +31,13 @@ public class UsersService {
         return usersRepository.findById(id);
     }
 
+    public List<String> getUsersBis(final Long id) {
+        List<String> list = new ArrayList<String>();
+        list.add(usersRepository.findById(id).get().getNom());
+        list.add(usersRepository.findById(id).get().getMail());
+        return list;
+    }
+
     public Optional<Users> getUsersMail(final String email) {
         Iterable<Users> Allusers = usersRepository.findAll();
         for (Users users : Allusers) {
@@ -41,22 +48,11 @@ public class UsersService {
         return null;
     }
 
-    public Optional<Users> connexion(String email, String password) {
-        Iterable<Users> Allusers = usersRepository.findAll();
-        for (Users users : Allusers) {
-            if (users.getMail().equals(email) && users.getPassword().equals(password)) {
-                return usersRepository.findById(users.getId());
-            }
+    public Long connexion(String email, String password) {
+        Users user = getUsersMail(email).get();
+        if (user.getPassword().equals(password)) {
+            return user.getId();
         }
         return null;
     }
-
-    /*public ListeAmis getListeAmis(final Long idUsers) {
-        return usersRepository.findById(idUsers).get().getListeAmis();
-    }*/
-
-
-
-
-
 }

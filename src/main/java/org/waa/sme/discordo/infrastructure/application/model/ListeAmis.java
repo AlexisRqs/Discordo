@@ -22,6 +22,8 @@ public class ListeAmis {
 
     @Column(name = "id_Users2")
     private Long idUser2;
+    @Column(name = "id_demandeur")
+    private Long id_demandeur;
 
     @Column(name = "en_Attente")
     private Boolean enAttente;

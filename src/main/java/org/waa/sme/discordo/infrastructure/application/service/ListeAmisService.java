@@ -8,6 +8,7 @@ import org.waa.sme.discordo.infrastructure.application.model.Users;
 import org.waa.sme.discordo.infrastructure.application.repository.ListeAmisRepository;
 import org.waa.sme.discordo.infrastructure.application.repository.UsersRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,133 +24,154 @@ public class ListeAmisService {
     private UsersRepository usersRepository;
 
 
-    public ListeAmis saveListeAmis(ListeAmis listeAmis){
-        //return listeAmisRepository.save(listeAmis);
-        Optional<Users> savedUsers = usersService.getUsers(1L);
-        //usersRepository.save(savedUsers).setListeAmis((List<ListeAmis>) listeAmis);
-        //usersService.getUsers(listeAmis.getIdUser1()).get().getListeAmis().add(listeAmis);
-        //usersService.getUsers(1L).get().getListeAmis().add(listeAmis);
-        return getListeAmis(Long.valueOf(1));
+    public List<String> getListeAmis(Long currentUserId) {
+        Users currentUser = usersService.getUsers(currentUserId).get();
+        List<ListeAmis> currentListeAmis = currentUser.getListeAmis();
+        Long size = Long.valueOf(currentUser.getListeAmis().size());
+        List<String> listAmisAcceptes = new ArrayList<String>();
+        for (ListeAmis amis : currentListeAmis) {
+            if (amis.getAccepte().equals(true)) {
+                Long idUser2 = amis.getIdUser2();
+                Users amiUser = usersService.getUsers(idUser2).get();
+
+                String nom = amiUser.getNom();
+                String prenom = amiUser.getPrenom();
+
+                listAmisAcceptes.add(nom + " " + prenom);
+            }
+        }
+        return listAmisAcceptes;
     }
 
-    public ListeAmis getListeAmis(Long idUsers1) {
-        List<ListeAmis> listeAmis = usersService.getUsers(idUsers1).get().getListeAmis();
+    public List<String> getListeAmisEnAttente(Long currentUserId) {
+        Users currentUser = usersService.getUsers(currentUserId).get();
+        List<ListeAmis> currentListeAmis = currentUser.getListeAmis();
+        Long size = Long.valueOf(currentUser.getListeAmis().size());
+        List<String> listAmisEnAttente = new ArrayList<String>();
+        for (ListeAmis amis : currentListeAmis) {
+            if (amis.getEnAttente().equals(true) && !amis.getId_demandeur().equals(currentUserId)) {
+                Long idUser2 = amis.getIdUser2();
+                Users amiUser = usersService.getUsers(idUser2).get();
+
+                String nom = amiUser.getNom();
+                String prenom = amiUser.getPrenom();
+
+                listAmisEnAttente.add(nom + " " + prenom);
+            }
+        }
+        return listAmisEnAttente;
+    }
+
+    public String amisBloquer(Long currentUserId, Long idUserABloquer, Boolean bloquerBoolean) {
+        Users currentUsers = usersService.getUsers(currentUserId).get();
+        Users usersABloquer = usersService.getUsers(idUserABloquer).get();
+
+        List<ListeAmis> listeAmis = currentUsers.getListeAmis();
         for (ListeAmis amis : listeAmis) {
-            if (amis.getUsers().getId().equals(idUsers1)) {
-                if (amis.getAccepte().equals(true)) {
-                    return amis;
+            if (amis.getIdUser2().equals(idUserABloquer)) {
+                if (amis.getBloquee().equals(true)) {
+                    if (amis.getIdBloqueur().equals(currentUserId)) {
+                        if (bloquerBoolean.equals(true)) {
+                            return "Vous avez déjà bloqué cet utilisateur";
+                        } else {
+                            List<ListeAmis> listeAmisReverse = usersABloquer.getListeAmis();
+                            for (ListeAmis amisReverse : listeAmisReverse) {
+                                if (amisReverse.getIdUser2().equals(currentUserId) && amisReverse.getIdBloqueur().equals(currentUserId)) {
+                                    listeAmisRepository.deleteById(amisReverse.getId());
+                                    break;
+                                }
+                            }
+                            listeAmisRepository.deleteById(amis.getId());
+                            return "Vous avez débloqué cet utilisateur";
+                        }
+                    } else {
+                        return "Utilisateur non disponible";
+                    }
+                }
+                amis.setBloquee(true);
+                amis.setIdBloqueur(currentUserId);
+                amis.setAccepte(false);
+                amis.setEnAttente(false);
+                listeAmisRepository.save(amis);
+                List<ListeAmis> listeAmisReverse = usersABloquer.getListeAmis();
+                for (ListeAmis amisReverse : listeAmisReverse) {
+                    if (amisReverse.getIdUser2().equals(currentUserId)) {
+                        amisReverse.setBloquee(true);
+                        amisReverse.setIdBloqueur(currentUserId);
+                        amisReverse.setAccepte(false);
+                        amisReverse.setEnAttente(false);
+                        listeAmisRepository.save(amisReverse);
+                        return "Utilisateur bloqué";
+                    }
                 }
             }
         }
         return null;
     }
 
-    public String ajoutAmisId(Long idUsers1, Long idUsers2) {
-        List<ListeAmis> listeAmis = usersService.getUsers(idUsers1).get().getListeAmis();
+    public String ajoutAmisMail(Long idDemandeur, String mailReceveur) {
+        Long idReceveur = usersService.getUsersMail(mailReceveur).get().getId();
+        return ajoutAmisId(idDemandeur, idReceveur);
+    }
+
+    public String ajoutAmisId(Long idDemandeur, Long idReceveur) {
+        Users usersDemandeur = usersService.getUsers(idDemandeur).get();
+        Users usersReceveur = usersService.getUsers(idReceveur).get();
+
+        List<ListeAmis> listeAmis = usersDemandeur.getListeAmis();
         for (ListeAmis amis : listeAmis) {
-            if (amis.getIdUser2().equals(idUsers2)) {
+            if (amis.getIdUser2().equals(idReceveur) && amis.getId_demandeur().equals(idDemandeur)) {
                 if (amis.getAccepte().equals(true)) {
                     return "deja ami";
                 } else if (amis.getEnAttente().equals(true)) {
                     return "votre demande est en attente";
+
                 } else if (amis.getBloquee().equals(true)) {
                     return "vous avez bloqué cet utilisateur";
                 }
-            }
-        }
-        List<ListeAmis> listeAmis2 = usersService.getUsers(idUsers2).get().getListeAmis();
-        for (ListeAmis amis2 : listeAmis2) {
-            if (amis2.getAccepte().equals(true)) {
-                return "deja ami";
-            } else if (amis2.getEnAttente().equals(true)) {
-                amis2.setAccepte(true);
-                amis2.setEnAttente(false);
-                listeAmisRepository.save(amis2);
-                return "L'utilisateur vous avais deja envoyé une demande, vous venez de l'accepter";
-            } else if (amis2.getBloquee().equals(true)) {
-                return "l'utilisateur n'est pas disponible";
+            } else if (amis.getIdUser2().equals(idReceveur) && amis.getId_demandeur().equals(idReceveur)) {
+                if (amis.getAccepte().equals(true)) {
+                    return "deja ami";
+                } else if (amis.getEnAttente().equals(true)) {
+                    amis.setAccepte(true);
+                    amis.setEnAttente(false);
+                    listeAmisRepository.save(amis);
+                    List<ListeAmis> listeAmisReverse = usersReceveur.getListeAmis();
+                    for (ListeAmis amisReverse : listeAmisReverse) {
+                        if (amisReverse.getIdUser2().equals(idDemandeur) && amisReverse.getId_demandeur().equals(idReceveur)) {
+                            amisReverse.setAccepte(true);
+                            amisReverse.setEnAttente(false);
+                            listeAmisRepository.save(amisReverse);
+                            return "vous etes maintenant ami";
+                        }
+                    }
+                }
+            } else if (amis.getBloquee().equals(true)) {
+                return "utilisateur non disponible";
             }
         }
         //creation de la demande d'ami
         ListeAmis listeAmis1 = new ListeAmis();
-        listeAmis1.setUsers(usersService.getUsers(idUsers1).get());
-        listeAmis1.setIdUser2(idUsers2);
+        listeAmis1.setUsers(usersDemandeur);
+        listeAmis1.setIdUser2(idReceveur);
+        listeAmis1.setId_demandeur(idDemandeur);
         listeAmis1.setEnAttente(true);
         listeAmis1.setBloquee(false);
         listeAmis1.setAccepte(false);
         listeAmis1.setIdBloqueur(0L);
         listeAmisRepository.save(listeAmis1);
+
+        ListeAmis listeAmisBis = new ListeAmis();
+        listeAmisBis.setUsers(usersReceveur);
+        listeAmisBis.setIdUser2(idDemandeur);
+        listeAmisBis.setId_demandeur(idDemandeur);
+        listeAmisBis.setEnAttente(true);
+        listeAmisBis.setBloquee(false);
+        listeAmisBis.setAccepte(false);
+        listeAmisBis.setIdBloqueur(0L);
+        listeAmisRepository.save(listeAmisBis);
         return "une demande à été envoyé";
     }
 
-    public String ajoutAmisMail(Long idUsers1, String Mail) {
-        List<ListeAmis> listeAmis = usersService.getUsers(idUsers1).get().getListeAmis();
-        for (ListeAmis amis : listeAmis) {
-            if (usersService.getUsersMail(Mail).get().getId().equals(amis.getIdUser2())) {
-                if (amis.getAccepte().equals(true)) {
-                    return "deja ami";
-                } else if (amis.getEnAttente().equals(true)) {
-                    return "votre demande est en attente";
-                } else if (amis.getBloquee().equals(true)) {
-                    return "vous avez bloqué cet utilisateur";
-                }
-            }
-        }
-        List<ListeAmis> listeAmis2 = usersService.getUsersMail(Mail).get().getListeAmis();
-        for (ListeAmis amis2 : listeAmis2) {
-            if (amis2.getIdUser2().equals(idUsers1)) {
-                if (amis2.getAccepte().equals(true)) {
-                    return "deja ami";
-                } else if (amis2.getEnAttente().equals(true)) {
-                    amis2.setAccepte(true);
-                    amis2.setEnAttente(false);
-                    listeAmisRepository.save(amis2);
-                    return "L'utilisateur vous avais deja envoyé une demande, vous venez de l'accepter";
-                } else if (amis2.getBloquee().equals(true)) {
-                    return "l'utilisateur n'est pas disponible";
-                }
-            }
-        }
-        //creation de la demande d'ami
-        ListeAmis listeAmis1 = new ListeAmis();
-        listeAmis1.setUsers(usersService.getUsers(idUsers1).get());
-        listeAmis1.setIdUser2(usersService.getUsersMail(Mail).get().getId());
-        listeAmis1.setEnAttente(true);
-        listeAmis1.setBloquee(false);
-        listeAmis1.setAccepte(false);
-        listeAmis1.setIdBloqueur(0L);
-        listeAmisRepository.save(listeAmis1);
-        return "une demande à été envoyé";
-    }
-
-
-
-
-
-    /*
-    public ListeAmis saveListeAmis(Long idUsers) {
-        Optional<Users> users = usersService.getUsers(idUsers);
-        ListeAmis listeAmis = new ListeAmis();
-        //users.get().setListeAmis((List<ListeAmis>) listeAmis);
-        usersService.getUsers(idUsers).get().getListeAmis().add(listeAmis);
-        return null;
-    }
-    */
-
-    /*public boolean saveListeAmis(ListeAmis listeAmis){
-        //return listeAmisRepository.save(listeAmis);
-        Optional<Users> savedUsers = usersService.getUsers(Long.valueOf(1));
-        usersRepository.save(savedUsers).setListeAmis((List<ListeAmis>) listeAmis);
-        //return usersService.getUsers(Long.valueOf(1)).get().getListeAmis().add(listeAmis);
-        return true;
-    }*/
-/*
-    public String getTopic(Long idUsers, Long idUsers2) {
-        Optional<Users> users = usersService.getUsers(idUsers);
-        ListeAmis listeAmis = usersService.getListeAmis(idUsers);
-        //return listeAmis.getTopic();
-        return null;
-    }
-    */
 
 }
