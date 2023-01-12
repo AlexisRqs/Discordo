@@ -1,8 +1,7 @@
 package org.waa.sme.discordo.infrastructure.application.model;
 
+import jakarta.persistence.*;
 import lombok.Data;
-
-import javax.persistence.*;
 
 @Data
 @Table(name = "liste_amis")

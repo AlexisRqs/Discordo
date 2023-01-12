@@ -13,7 +13,7 @@ import org.waa.sme.discordo.infrastructure.application.model.Users;
 import org.waa.sme.discordo.infrastructure.application.service.UsersService;
 
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
