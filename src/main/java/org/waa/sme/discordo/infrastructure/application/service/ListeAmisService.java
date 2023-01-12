@@ -62,6 +62,65 @@ public class ListeAmisService {
         return listAmisEnAttente;
     }
 
+    public List<ListeAmis> getListeAmisSpecifique (Long idDemandeur, Long idReceveur) {
+        List<Users> listUsers = usersService.getUsersRelationAmis(idDemandeur, idReceveur);
+        List<ListeAmis> listeFinale = new ArrayList<ListeAmis>();
+        List<ListeAmis> listeAmisU1 = listUsers.get(0).getListeAmis();
+        List<ListeAmis> listeAmisU2 = listUsers.get(1).getListeAmis();
+        for (ListeAmis listeAmis : listeAmisU1) {
+            if (listeAmis.getIdUser2().equals(idReceveur)) {
+                listeFinale.add(listeAmis);
+            }
+        }
+        for (ListeAmis listeAmis : listeAmisU2) {
+            if (listeAmis.getIdUser2().equals(idDemandeur)) {
+                listeFinale.add(listeAmis);
+            }
+        }
+        listUsers.get(1).getListeAmis();
+        return listeFinale;
+    }
+    public Long getNombreAmis(Long currentUserId) {
+        Users currentUser = usersService.getUsers(currentUserId).get();
+        List<ListeAmis> currentListeAmis = currentUser.getListeAmis();
+        List<String> listNombre = new ArrayList<String>();
+        for (ListeAmis amis : currentListeAmis) {
+            if (amis.getAccepte().equals(true)) {
+                listNombre.add(" ");
+            }
+        }
+        Long size = Long.valueOf(listNombre.size());
+        return size;
+    }
+
+    public String accepterAmiEnAttente(Long currentUserId, Long idFuturAmi) {
+        Users currentUser = usersService.getUsers(currentUserId).get();
+        Users futurAmi = usersService.getUsers(idFuturAmi).get();
+        List<ListeAmis> listeAmis = currentUser.getListeAmis();
+        for (ListeAmis amis : listeAmis) {
+            if (amis.getIdUser2().equals(idFuturAmi)) {
+                if (!amis.getId_demandeur().equals(currentUserId)) {
+                    if (amis.getEnAttente().equals(true)) {
+                        amis.setEnAttente(false);
+                        amis.setAccepte(true);
+                        listeAmisRepository.save(amis);
+                        List<ListeAmis> listeFuturAmis = futurAmi.getListeAmis();
+                        for (ListeAmis amisFutur : listeFuturAmis) {
+                            if (amisFutur.getIdUser2().equals(currentUserId)) {
+                                amisFutur.setEnAttente(false);
+                                amisFutur.setAccepte(true);
+                                listeAmisRepository.save(amisFutur);
+                                String validation = "Vous êtes maintenant amis avec " + futurAmi.getNom() + " " + futurAmi.getPrenom();
+                                return validation;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return "Erreur";
+    }
+
     public String amisBloquer(Long currentUserId, Long idUserABloquer, Boolean bloquerBoolean) {
         Users currentUsers = usersService.getUsers(currentUserId).get();
         Users usersABloquer = usersService.getUsers(idUserABloquer).get();
@@ -172,6 +231,8 @@ public class ListeAmisService {
         listeAmisRepository.save(listeAmisBis);
         return "une demande à été envoyé";
     }
+
+
 
 
 }

@@ -32,8 +32,8 @@ public class UsersController {
         return usersService.saveUsers(users);
     }
 
-    @GetMapping("/connexion/{email}/{password}")
-    public Long connexion(@PathVariable String email, @PathVariable String password) {
+    @GetMapping("/connexion/{email}")
+    public Long connexion(@PathVariable String email, @RequestBody String password) {
         System.out.println("email : " + email + " password : " + password);
         return usersService.connexion(email, password);
     }
@@ -57,6 +57,11 @@ public class UsersController {
     public Users getUsers(@PathVariable String email) {
         System.out.println("email : " + email);
         return usersService.getUsersMail(email).get();
+    }
+    @GetMapping("/usersPrecisBis/{email}")
+    public List<String> getUsersBis(@PathVariable String email) {
+        System.out.println("email : " + email);
+        return usersService.getUserMailBis(email);
     }
 
     /*@GetMapping("/users/listeAmis")

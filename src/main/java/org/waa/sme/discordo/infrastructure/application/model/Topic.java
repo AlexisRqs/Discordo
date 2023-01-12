@@ -3,21 +3,23 @@ package org.waa.sme.discordo.infrastructure.application.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.io.Serializable;
+import java.util.List;
 
 @Data
-@Table(name = "IdTopic")
+@Table(name = "topic")
 @Entity
-public class IdTopic implements Serializable {
+public class Topic {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "id_lieeIdTopic")
-    private Long id_lieeIdTopic;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "topic")
+    private List<ListeAmis> listeAmis;
 
     @Column(name = "path")
     private String path;
-    @Column(name = "msgEnAttente")
+    @Column(name = "msg_en_attente")
     private String msgEnAttente;
+    @Column(name = "id_user_envoie_msg_en_attente")
+    private Long idUserEnvoieMsgEnAttente;
 }

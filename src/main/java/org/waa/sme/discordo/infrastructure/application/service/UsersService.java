@@ -47,6 +47,24 @@ public class UsersService {
         }
         return null;
     }
+    public List<String> getUserMailBis(final String email) {
+        List<String> list = new ArrayList<String>();
+        Iterable<Users> Allusers = usersRepository.findAll();
+        for (Users users : Allusers) {
+            if (users.getMail().equals(email)) {
+                list.add(users.getNom());
+                list.add(users.getMail());
+            }
+        }
+        return list;
+    }
+
+    public List<Users> getUsersRelationAmis (Long idDemandeur, Long idReveceur) {
+        List<Users> listUsers = new ArrayList<Users>();
+        listUsers.add(getUsers(idDemandeur).get());
+        listUsers.add(getUsers(idReveceur).get());
+        return listUsers;
+    }
 
     public Long connexion(String email, String password) {
         Users user = getUsersMail(email).get();
