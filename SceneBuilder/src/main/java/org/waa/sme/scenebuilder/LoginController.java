@@ -9,11 +9,13 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
+
 public class LoginController {
 
     public LoginController() {
 
     }
+
     @FXML
     private TextField username;
     @FXML
@@ -30,9 +32,8 @@ public class LoginController {
 
     private void checkLogin() throws IOException {
         DiscordoApp m = new DiscordoApp();
-        if(username.getText().toString().equals("alexis") && password.getText().toString().equals("Azerty$123")) {
+        if(username.getText().toString().equals("alexis") && password.getText().toString().equals("aze")) {
             wrongPassword.setText("Connexion réussie !");
-
             m.changeScene("Home.fxml");
 
         } else if (username.getText().isEmpty() && password.getText().isEmpty()) {
