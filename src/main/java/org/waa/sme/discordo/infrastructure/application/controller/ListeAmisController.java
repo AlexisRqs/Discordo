@@ -47,8 +47,9 @@ public class ListeAmisController {
     public String ajoutAmisId(@PathVariable Long idUsers1, @PathVariable Long idUsers2) {
         return listeAmisService.ajoutAmisId(idUsers1, idUsers2);
     }
+    // FROM PUT TO POST TTENTION LOOSER
         //ajout par mail
-    @PutMapping("/users/{idDemandeur}/ajoutAmisMail")
+    @PostMapping("/users/{idDemandeur}/ajoutAmisMail")
     public String ajoutAmisMail(@PathVariable Long idDemandeur, @RequestBody String mailReceveur) {
         return listeAmisService.ajoutAmisMail(idDemandeur, mailReceveur);
     }

@@ -22,7 +22,8 @@ public class UsersController {
     @Autowired
     private UsersService usersService;
 
-    @PutMapping("/usersAjout")
+    // FROM PUT TO POST TTENTION LOOSER
+    @PostMapping("/usersAjout")
     public Users updateUsers(@RequestBody Users users) {
         System.out.println("update users");
         return usersService.saveUsers(users);
@@ -32,7 +33,7 @@ public class UsersController {
         return usersService.saveUsers(users);
     }
 
-    @GetMapping("/connexion/{email}")
+    @PostMapping("/connexion/{email}")
     public Long connexion(@PathVariable String email, @RequestBody String password) {
         System.out.println("email : " + email + " password : " + password);
         return usersService.connexion(email, password);

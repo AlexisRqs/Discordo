@@ -16,11 +16,13 @@ public class IdTopicController {
     public Topic setTopic(@PathVariable Long idUsers1, @PathVariable Long idUsers2) {
         return topicService.setTopic(idUsers1, idUsers2);
     }
-    @PutMapping("/topic/{idUsers1}/setMessageEnAttente/{idUsers2}")
+    // FROM PUT TO POST TTENTION LOOSER
+    @PostMapping("/topic/{idUsers1}/setMessageEnAttente/{idUsers2}")
     public void setMessageEnAttente(@PathVariable Long idUsers1, @PathVariable Long idUsers2, @RequestBody String message) {
         topicService.setMessageEnAttente(idUsers1, idUsers2, message);
     }
-    @PutMapping("/topic/{idUsers1}/setPath/{idUsers2}")
+    // FROM PUT TO POST TTENTION LOOSER
+    @PostMapping("/topic/{idUsers1}/setPath/{idUsers2}")
     public void setPath(@PathVariable Long idUsers1, @PathVariable Long idUsers2, @RequestBody String path) {
         topicService.setPath(idUsers1, idUsers2, path);
     }
