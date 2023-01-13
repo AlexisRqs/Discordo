@@ -29,16 +29,6 @@ public class TopicService {
     @Autowired
     private ListeAmisRepository listeAmisRepository;
 
-
-    /*    private Long id;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "topic")
-    private List<ListeAmis> listeAmis;
-    @Column(name = "path")
-    private String path;
-    @Column(name = "msgEnAttente")
-    private String msgEnAttente;
-    */
-
     //TOPIC
     public Topic setTopic(Long idDemandeur, Long idReceveur) {
         System.out.println("setTopic");

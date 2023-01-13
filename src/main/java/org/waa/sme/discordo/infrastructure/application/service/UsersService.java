@@ -19,6 +19,13 @@ public class UsersService {
 
 
     public Users saveUsers(Users users) {
+        String email = users.getMail();
+        Iterable<Users> Allusers = usersRepository.findAll();
+        for (Users usersFor : Allusers) {
+            if (usersFor.getMail().equals(email)) {
+                return null;
+            }
+        }
         Users savedUsers = usersRepository.save(users);
         return savedUsers;
     }

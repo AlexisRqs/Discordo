@@ -26,7 +26,8 @@ public class connexion2 {
         try {
             URL url = new URL("http://localhost:9000/connexion/" + mail);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
-            con.setRequestMethod("GET");
+            con.setDoOutput(true);
+            con.setRequestMethod("POST");
             con.setRequestProperty("Content-Type", "application/json");
             con.setRequestProperty("Content-Length", Integer.toString(pwd.getBytes().length));
             con.getOutputStream().write(pwd.getBytes());
@@ -41,6 +42,11 @@ public class connexion2 {
             in.close();
             con.disconnect();
             System.out.println(content);
+            if (status == 200 && content.toString().equals("1")) {
+                System.out.println("Connexion réussie");
+            } else {
+                System.out.println("Connexion échouée");
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

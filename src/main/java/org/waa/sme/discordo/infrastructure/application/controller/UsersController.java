@@ -28,10 +28,6 @@ public class UsersController {
         System.out.println("update users");
         return usersService.saveUsers(users);
     }
-    @PostMapping("/users")
-    public Users createUsers(@RequestBody Users users) {
-        return usersService.saveUsers(users);
-    }
 
     @PostMapping("/connexion/{email}")
     public Long connexion(@PathVariable String email, @RequestBody String password) {
@@ -64,9 +60,4 @@ public class UsersController {
         System.out.println("email : " + email);
         return usersService.getUserMailBis(email);
     }
-
-    /*@GetMapping("/users/listeAmis")
-    public Iterable<Users> getListeAmis(@PathVariable Long idUsers) {
-        return (Iterable<Users>) usersService.getListeAmis(idUsers);
-    }*/
 }

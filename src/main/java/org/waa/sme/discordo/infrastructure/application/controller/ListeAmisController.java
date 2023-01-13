@@ -64,13 +64,4 @@ public class ListeAmisController {
         return listeAmisService.amisBloquer(currentUserId, idUserABloquer, bloquerBoolean);
     }
 
-    /*@PutMapping("/users/{id}/listeAmis/ajout")
-    public ListeAmis ajoutListeAmis(@RequestBody ListeAmis listeAmis, @PathVariable Long idUsers) {
-        return listeAmisService.saveListeAmis(listeAmis, idUsers);
-    }*/
-    /*@PutMapping("/users/{id}/listeAmis/ajout")
-    public ListeAmis ajoutListeAmis(@PathVariable Long idUsers) {
-        return listeAmisService.saveListeAmis(idUsers);
-    }*/
-
 }
