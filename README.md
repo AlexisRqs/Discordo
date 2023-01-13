@@ -1,11 +1,9 @@
 # Discordo
---------
+
 Projet de groupe par Antonin, Alexis & Winston
 Sophia Ynov Campus - 2022/2023
---------
 
-Lien GitHub : https://github.com/AlexisRqs/Discordo
-
+---
 Lancer DiscordoApplication
 src/main/java/org/waa/sme/discordo/DiscordoApplication.java
 
