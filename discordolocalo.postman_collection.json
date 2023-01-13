@@ -1,0 +1,497 @@
+{
+	"info": {
+		"_postman_id": "043cfcdf-8327-4dd3-b0ef-1fdc13df5db3",
+		"name": "discordolocalo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24485221"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "info user par id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9000/usersBis/1",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"usersBis",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete users",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:9000/users/1",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "info user par mail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9000/usersPrecis/laurentgina@mail.com",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"usersPrecis",
+								"laurentgina@mail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "connexion mail/mdp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "mdpdebob",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/connexion/bobletesteurfou@mail.com",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"connexion",
+								"bobletesteurfou@mail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ajout compte",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\": \"bob\",\r\n    \"prenom\": \"testeur\",\r\n    \"mail\": \"bobletesteurfou@mail.com\",\r\n    \"password\": \"mdpdebob\",\r\n    \"banni\": \"FALSE\",\r\n    \"date_Naissance\": \"3000-0-0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/usersAjout",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"usersAjout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "listeAmis",
+			"item": [
+				{
+					"name": "Bloquer-Debloquer",
+					"item": [
+						{
+							"name": "Bloquer un utilisateur",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "localhost:9000/users/2/bloquer/1/true",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"users",
+										"2",
+										"bloquer",
+										"1",
+										"true"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Debloquer un utilisateur",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "localhost:9000/users/2/bloquer/1/false",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"users",
+										"2",
+										"bloquer",
+										"1",
+										"false"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Afficher liste amis",
+					"item": [
+						{
+							"name": "charger liste ami par id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:9000/users/1/listeAmis",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"users",
+										"1",
+										"listeAmis"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "lsite Demande Amis",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "Liste Amis",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:9000/users/1/listeAmis",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"users",
+										"1",
+										"listeAmis"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Ajouter des amis",
+					"item": [
+						{
+							"name": "ajouter ami id",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "localhost:9000/users/1/ajoutAmisId/2",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"users",
+										"1",
+										"ajoutAmisId",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ajouter ami id Copy",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "localhost:9000/users/2/ajoutAmisId/1",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"users",
+										"2",
+										"ajoutAmisId",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ajouter ami mail",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "laurentgina@mail.com"
+								},
+								"url": {
+									"raw": "localhost:9000/users/3/ajoutAmisMail/",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"users",
+										"3",
+										"ajoutAmisMail",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Accepter une demande en attente",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "localhost:9000/users/2/accepterAmiEnAttente/1",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"users",
+										"2",
+										"accepterAmiEnAttente",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Topic",
+			"item": [
+				{
+					"name": "setTopic",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:9000/topic/1/setTopic/2",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"topic",
+								"1",
+								"setTopic",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "setMessageEnAttente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "(-: Voici un message test :-) (╯°□°)╯︵ ┻━┻",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/topic/1/setMessageEnAttente/2",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"topic",
+								"1",
+								"setMessageEnAttente",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "setPath",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "Voici/un/path/test",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/topic/1/setPath/2",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"topic",
+								"1",
+								"setPath",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteMessageEnAttente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:9000/topic/1/deleteMessageEnAttente/2",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"topic",
+								"1",
+								"deleteMessageEnAttente",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPath",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9000/topic/1/getPath/2",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"topic",
+								"1",
+								"getPath",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getMessageEnAttente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9000/topic/2/getMessageEnAttente/1",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"topic",
+								"2",
+								"getMessageEnAttente",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTopicId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9000/topic/2/getTopicId/1",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"topic",
+								"2",
+								"getTopicId",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

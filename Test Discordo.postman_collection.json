@@ -1,0 +1,619 @@
+{
+	"info": {
+		"_postman_id": "25c5e9b9-77ce-46f5-9a7a-d9a6eab145db",
+		"name": "Test Discordo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24485221"
+	},
+	"item": [
+		{
+			"name": "Test Mise en place Users avec amitiés",
+			"item": [
+				{
+					"name": "ajout compte 1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\": \"bob\",\r\n    \"prenom\": \"testeur\",\r\n    \"mail\": \"bobletesteurfou@mail.com\",\r\n    \"password\": \"mdpdebob\",\r\n    \"banni\": \"FALSE\",\r\n    \"date_Naissance\": \"3000-0-0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/usersAjout",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"usersAjout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ajout compte 2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\": \"rigolo\",\r\n    \"prenom\": \"fedro\",\r\n    \"mail\": \"fredolerigolo@mail.com\",\r\n    \"password\": \"mdpdefredo\",\r\n    \"banni\": \"FALSE\",\r\n    \"date_Naissance\": \"3023-0-0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/usersAjout",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"usersAjout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ajout compte 3",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\": \"palma\",\r\n    \"prenom\": \"jeane\",\r\n    \"mail\": \"maisElleEstOuJeaaane@mail.com\",\r\n    \"password\": \"mdpdejeane\",\r\n    \"banni\": \"FALSE\",\r\n    \"date_Naissance\": \"1789-0-0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/usersAjout",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"usersAjout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ajout compte 4",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\": \"ouer\",\r\n    \"prenom\": \"wa\",\r\n    \"mail\": \"waouer@mail.com\",\r\n    \"password\": \"mdpdewa\",\r\n    \"banni\": \"FALSE\",\r\n    \"date_Naissance\": \"1789-0-0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/usersAjout",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"usersAjout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ajout compte 5",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\": \"pel\",\r\n    \"prenom\": \"wi\",\r\n    \"mail\": \"wipel@mail.com\",\r\n    \"password\": \"mdpdewi\",\r\n    \"banni\": \"FALSE\",\r\n    \"date_Naissance\": \"1789-0-0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/usersAjout",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"usersAjout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ajout compte 6",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\": \"mon\",\r\n    \"prenom\": \"ma\",\r\n    \"mail\": \"mamon@mail.com\",\r\n    \"password\": \"mdpdema\",\r\n    \"banni\": \"FALSE\",\r\n    \"date_Naissance\": \"1789-0-0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/usersAjout",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"usersAjout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ajouter ami 1 vers 2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "fredolerigolo@mail.com"
+						},
+						"url": {
+							"raw": "localhost:9000/users/1/ajoutAmisMail",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"users",
+								"1",
+								"ajoutAmisMail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ajouter ami 1 vers 3",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "maisElleEstOuJeaaane@mail.com"
+						},
+						"url": {
+							"raw": "localhost:9000/users/1/ajoutAmisMail",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"users",
+								"1",
+								"ajoutAmisMail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ajouter ami 1 vers 4",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "waouer@mail.com"
+						},
+						"url": {
+							"raw": "localhost:9000/users/1/ajoutAmisMail",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"users",
+								"1",
+								"ajoutAmisMail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ajouter ami 1 vers 5",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "wipel@mail.com"
+						},
+						"url": {
+							"raw": "localhost:9000/users/1/ajoutAmisMail",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"users",
+								"1",
+								"ajoutAmisMail"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2 accepte 1",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:9000/users/2/accepterAmiEnAttente/1",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"users",
+								"2",
+								"accepterAmiEnAttente",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3 bloque 1",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:9000/users/3/bloquer/1/true",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"users",
+								"3",
+								"bloquer",
+								"1",
+								"true"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Test setTopic",
+			"item": [
+				{
+					"name": "ajout compte 1",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\": \"bob\",\r\n    \"prenom\": \"testeur\",\r\n    \"mail\": \"bobletesteurfou@mail.com\",\r\n    \"password\": \"mdpdebob\",\r\n    \"banni\": \"FALSE\",\r\n    \"date_Naissance\": \"3000-0-0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/usersAjout",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"usersAjout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ajout compte 2",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\": \"bob\",\r\n    \"prenom\": \"testeur\",\r\n    \"mail\": \"bobletesteurfou@mail.com\",\r\n    \"password\": \"mdpdebob\",\r\n    \"banni\": \"FALSE\",\r\n    \"date_Naissance\": \"3000-0-0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/usersAjout",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"usersAjout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ajouter ami id 1 vers 2",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:9000/users/1/ajoutAmisId/2",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"users",
+								"1",
+								"ajoutAmisId",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Accepter une demande en attente Copy",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:9000/users/2/accepterAmiEnAttente/1",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"users",
+								"2",
+								"accepterAmiEnAttente",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "setTopic 1",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:9000/topic/1/setTopic/2",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"topic",
+								"1",
+								"setTopic",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Test getMessageEnAttente",
+			"item": [
+				{
+					"name": "ajout compte 1",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\": \"bob\",\r\n    \"prenom\": \"testeur\",\r\n    \"mail\": \"bobletesteurfou@mail.com\",\r\n    \"password\": \"mdpdebob\",\r\n    \"banni\": \"FALSE\",\r\n    \"date_Naissance\": \"3000-0-0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/usersAjout",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"usersAjout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ajout compte 2",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\": \"bob\",\r\n    \"prenom\": \"testeur\",\r\n    \"mail\": \"bobletesteurfou@mail.com\",\r\n    \"password\": \"mdpdebob\",\r\n    \"banni\": \"FALSE\",\r\n    \"date_Naissance\": \"3000-0-0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/usersAjout",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"usersAjout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ajouter ami id 1 vers 2",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:9000/users/1/ajoutAmisId/2",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"users",
+								"1",
+								"ajoutAmisId",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Accepter une demande en attente Copy",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:9000/users/2/accepterAmiEnAttente/1",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"users",
+								"2",
+								"accepterAmiEnAttente",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "setTopic 1",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:9000/topic/1/setTopic/2",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"topic",
+								"1",
+								"setTopic",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "setMessageEnAttente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "(-: Voici un message test :-) (╯°□°)╯︵ ┻━┻",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9000/topic/1/setMessageEnAttente/2",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"topic",
+								"1",
+								"setMessageEnAttente",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getMessageEnAttente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9000/topic/2/getMessageEnAttente/1",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"topic",
+								"2",
+								"getMessageEnAttente",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
