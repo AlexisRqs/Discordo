@@ -32,10 +32,6 @@ public class IdTopicController {
     public Topic getTopic(@PathVariable Long idUsers1, @PathVariable Long idUsers2) {
         return topicService.getTopic(idUsers1, idUsers2);
     }
-    @GetMapping("/topic/{idUsers1}/getTopicId/{idUsers2}")
-    public Long getTopicId(@PathVariable Long idUsers1, @PathVariable Long idUsers2) {
-        return topicService.getTopicId(idUsers1, idUsers2);
-    }
     @GetMapping("/topic/{idUsers1}/getMessageEnAttente/{idUsers2}")
     public String getMessageEnAttente(@PathVariable Long idUsers1, @PathVariable Long idUsers2) {
         return topicService.getMessageEnAttente(idUsers1, idUsers2);

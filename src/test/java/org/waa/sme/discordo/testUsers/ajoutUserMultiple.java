@@ -13,7 +13,7 @@ import java.net.URL;
 public class ajoutUserMultiple {
 
     private static final String USER_AGENT = "Mozilla/5.0";
-    private static final String POST_URL = "http://localhost:9000/usersAjout";
+    private static final String POST_URL = "http://localhost:9001/usersAjout";
     //String jsonBody = "{\"nom\":\"bob\",\"prenom\":\"testeur\",\"mail\":\"bobletesteurfou@mail.com\",\"password\":\"mdpdebob\",\"banni\":\"FALSE\",\"date_Naissance\":\"3000-0-0\"}";
     //JSONObject jsonObject = new JSONObject(jsonBody);
 
@@ -46,7 +46,8 @@ public class ajoutUserMultiple {
     private static HttpURLConnection sendPOST(String jsonBody) throws IOException {
         URL obj = new URL(POST_URL);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-        con.setRequestMethod("PUT");
+        con.setDoOutput(true);
+        con.setRequestMethod("POST");
         con.setRequestProperty("Content-Type", "application/json");
         con.setDoOutput(true);
 

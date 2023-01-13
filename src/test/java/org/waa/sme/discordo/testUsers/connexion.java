@@ -5,26 +5,28 @@ import org.json.JSONException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class connexion2 {
+public class connexion {
 
     private static final String USER_AGENT = "Mozilla/5.0";
     private static final String GET_URL = "http://localhost:9000//connexion/";
-    public connexion2() throws JSONException {
+    public connexion() throws JSONException {
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, JSONException {
         sendPOST();
     }
 
-    private static void sendPOST() throws IOException {
+    private static void sendPOST() throws IOException, JSONException {
+        ajoutUserSimple ajoutUserSimpleMethode = new ajoutUserSimple();
+        ajoutUserSimpleMethode.sendPOST();
+
         String mail = "bobletesteurfou@mail.com";
         String pwd = "mdpdebob";
         try {
-            URL url = new URL("http://localhost:9000/connexion/" + mail);
+            URL url = new URL("http://localhost:9001/connexion/" + mail);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setDoOutput(true);
             con.setRequestMethod("POST");

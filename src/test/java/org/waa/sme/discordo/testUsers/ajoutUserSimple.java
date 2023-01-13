@@ -13,7 +13,7 @@ import org.json.JSONObject;
 public class ajoutUserSimple {
 
     private static final String USER_AGENT = "Mozilla/5.0";
-    private static final String POST_URL = "http://localhost:9000/usersAjout";
+    private static final String POST_URL = "http://localhost:9001/usersAjout";
     private static final String jsonBody = "{\"nom\":\"bob\",\"prenom\":\"testeur\",\"mail\":\"bobletesteurfou@mail.com\",\"password\":\"mdpdebob\",\"banni\":\"FALSE\",\"date_Naissance\":\"3000-0-0\"}";
 
     public ajoutUserSimple() throws JSONException {
@@ -23,10 +23,11 @@ public class ajoutUserSimple {
         sendPOST();
     }
 
-    private static void sendPOST() throws IOException {
+    public static void sendPOST() throws IOException {
         URL obj = new URL(POST_URL);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-        con.setRequestMethod("PUT");
+        con.setDoOutput(true);
+        con.setRequestMethod("POST");
         con.setRequestProperty("Content-Type", "application/json");
         con.setDoOutput(true);
 
@@ -49,11 +50,12 @@ public class ajoutUserSimple {
                 response.append(inputLine);
             }
             in.close();
-            System.out.println(response.toString());
 
-            System.out.println("Le test ajoutUserSimple");
-            System.out.println("Fait sur : " + POST_URL);
-            System.out.println("Est un succes");
+            if (!response.toString().equals(null)) {
+                System.out.println("User ajouté");
+            } else {
+                System.out.println("User deja ajouté");
+            }
 
         } else {
             System.out.println("POST request not worked");
