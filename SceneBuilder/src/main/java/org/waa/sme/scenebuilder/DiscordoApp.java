@@ -19,7 +19,7 @@ public class DiscordoApp extends Application {
         //FXMLLoader fxmlLoader = new FXMLLoader(DiscordoApp.class.getResource("Scenebuilder1.fxml"));
         Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
         //Scene scene = new Scene(fxmlLoader.load(), 900, 600);
-        stage.setTitle("Discordo | Pre-Alpha v.0.1");
+        stage.setTitle("Discordo");
         stage.setScene(new Scene(root, 900, 600));
         stage.show();
     }

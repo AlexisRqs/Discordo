@@ -61,10 +61,10 @@
                 <Color red="0.624" green="0.624" blue="0.624" fx:id="x2" />
               </textFill>
             </Label>
-                  <TextField fx:id="searchFriend" layoutX="10.0" layoutY="41.0" promptText="Rechercher..." />
-                  <ListView fx:id="friendList" layoutX="10.0" layoutY="80.0" prefHeight="451.0" prefWidth="200.0" />
-                  <Button fx:id="addFriendButton" layoutX="10.0" layoutY="537.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="Ajouter un ami" AnchorPane.topAnchor="537.0" />
-                  <Button fx:id="settingsButton" layoutX="117.0" layoutY="537.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="93.0" text="Réglages" AnchorPane.topAnchor="537.0" />
+            <TextField fx:id="searchFriend" layoutX="10.0" layoutY="41.0" promptText="Rechercher..." />
+            <ListView fx:id="friendList" layoutX="10.0" layoutY="80.0" prefHeight="451.0" prefWidth="200.0"/>
+            <Button fx:id="addFriendButton" layoutX="10.0" layoutY="537.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="Ajouter un ami" AnchorPane.topAnchor="537.0" />
+            <Button fx:id="settingsButton" layoutX="117.0" layoutY="537.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="93.0" text="Réglages" AnchorPane.topAnchor="537.0" />
           </children>
         </AnchorPane>
         <ScrollPane prefHeight="-1.0" prefWidth="-1.0">
@@ -72,15 +72,15 @@
             <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="430.0">
               <children>
                 <Label fx:id="friendLabel" alignment="CENTER" font="$x1" layoutX="10.0" layoutY="10.0" style="&#10;" textAlignment="CENTER" textFill="$x2" wrapText="false" />
-                        <TextArea layoutX="44.0" layoutY="503.0" prefHeight="60.0" prefWidth="392.0" promptText="Envoyer un message..." scrollLeft="50.0" style="-fx-background-color: grey;" wrapText="true" AnchorPane.leftAnchor="44.0" />
-                        <Button fx:id="emojiButton" layoutX="8.0" layoutY="503.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="28.0" text="❤" />
-                        <TextField fx:id="searchMessage" layoutX="287.0" layoutY="10.0" promptText="Rechercher..." />
-                        <Button fx:id="commandButton" layoutX="8.0" layoutY="536.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="28.0" text="/" AnchorPane.topAnchor="536.0" />
-                        <ScrollPane layoutX="7.0" layoutY="45.0" prefHeight="451.0" prefWidth="429.0">
-                          <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="450.0" prefWidth="427.0" />
-                          </content>
-                        </ScrollPane>
+                <TextArea layoutX="44.0" layoutY="503.0" prefHeight="60.0" prefWidth="392.0" promptText="Envoyer un message..." scrollLeft="50.0" style="-fx-background-color: grey;" wrapText="true" AnchorPane.leftAnchor="44.0" />
+                <Button fx:id="emojiButton" layoutX="8.0" layoutY="503.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="28.0" text="❤" />
+                <TextField fx:id="searchMessage" layoutX="287.0" layoutY="10.0" promptText="Rechercher..." />
+                <Button fx:id="commandButton" layoutX="8.0" layoutY="536.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="28.0" text="/" AnchorPane.topAnchor="536.0" />
+                <ScrollPane layoutX="7.0" layoutY="45.0" prefHeight="451.0" prefWidth="429.0">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="450.0" prefWidth="427.0" />
+                  </content>
+                </ScrollPane>
               </children>
             </AnchorPane>
           </content>
@@ -88,11 +88,11 @@
         <AnchorPane>
           <children>
             <Label alignment="CENTER" font="$x1" layoutX="10.0" layoutY="10.0" style="&#10;" text="Conversations" textAlignment="CENTER" textFill="$x2" wrapText="false" />
-                  <ScrollPane layoutX="11.0" layoutY="41.0" prefHeight="534.0" prefWidth="200.0">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-                    </content>
-                  </ScrollPane>
+            <ScrollPane layoutX="11.0" layoutY="41.0" prefHeight="534.0" prefWidth="200.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+              </content>
+            </ScrollPane>
           </children>
         </AnchorPane>
       </items>

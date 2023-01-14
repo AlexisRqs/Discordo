@@ -1,20 +1,18 @@
 package org.waa.sme.discordo.infrastructure.application.controller;
 
+import org.waa.sme.discordo.infrastructure.application.service.UsersService;
+import org.waa.sme.discordo.infrastructure.application.model.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.waa.sme.discordo.infrastructure.application.model.Users;
-import org.waa.sme.discordo.infrastructure.application.service.UsersService;
-
 import java.util.List;
-import java.util.Optional;
 
 /*
-    liste des fonctions :
-    - Créer un Users
-    - Supprimer un Users
-    - Recuperer un Users
+    Liste des fonctions :
+    - Créer un User
+    - Supprimer un User
+    - Récuperer un User
     - Afficher tout les users
-    - Recuperer la liste amis
+    - Récuperer la liste d'amis
  */
 
 @RestController
@@ -32,7 +30,7 @@ public class UsersController {
         return usersService.saveUsers(users);
     }
 
-    @GetMapping("/connexion/{email}")
+    @PostMapping("/connexion/{email}")
     public Long connexion(@PathVariable String email, @RequestBody String password) {
         System.out.println("email : " + email + " password : " + password);
         return usersService.connexion(email, password);

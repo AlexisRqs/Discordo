@@ -46,40 +46,40 @@
 <?import javafx.scene.text.Font?>
 
 <VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.waa.sme.scenebuilder.LoginController">
-  <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="209.0" prefWidth="170.0" VBox.vgrow="ALWAYS">
-      <children>
-            <ImageView id="logo" fx:id="logo" fitHeight="252.0" fitWidth="279.0" layoutX="327.0" layoutY="36.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@img/DiscordoLogo.png" />
-               </image>
-               <effect>
-                  <DropShadow blurType="ONE_PASS_BOX" spread="0.29">
-                     <input>
-                        <Glow level="0.29" />
-                     </input>
-                     <color>
-                        <Color opacity="0.6000000238418579" />
-                     </color>
-                  </DropShadow>
-               </effect>
-            </ImageView>
-            <TextField fx:id="username" layoutX="376.0" layoutY="318.0" prefHeight="25.0" prefWidth="150.0" />
-            <Label layoutX="376.0" layoutY="294.0" text="Adresse e-mail" textFill="#333333b3" />
-            <Label layoutX="377.0" layoutY="353.0" text="Mot de passe" textFill="#000000b3" />
-            <Label layoutX="429.0" layoutY="402.0" text="Mot de passe oublié ?" textFill="#b2b2b2">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Label>
-            <Button fx:id="loginButton" layoutX="416.0" layoutY="448.0" mnemonicParsing="false" onAction="#userLogin" text="Connexion" />
-            <PasswordField fx:id="password" layoutX="375.0" layoutY="377.0" prefHeight="25.0" prefWidth="150.0" />
-            <Label fx:id="wrongPassword" contentDisplay="TEXT_ONLY" layoutX="375.0" layoutY="258.0" prefHeight="30.0" prefWidth="200.0" textFill="#c91212">
-               <font>
-                  <Font name="System Bold" size="10.0" />
-               </font>
-            </Label>
-      </children>
-    </AnchorPane>
-  </children>
+    <children>
+        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="209.0" prefWidth="170.0" VBox.vgrow="ALWAYS">
+            <children>
+                <ImageView id="logo" fx:id="logo" fitHeight="456.0" fitWidth="482.0" layoutX="221.0" layoutY="-79.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@img/DiscordoLogo.png" />
+                    </image>
+                    <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" spread="0.29">
+                            <input>
+                                <Glow level="0.29" />
+                            </input>
+                            <color>
+                                <Color opacity="0.6000000238418579" />
+                            </color>
+                        </DropShadow>
+                    </effect>
+                </ImageView>
+                <TextField fx:id="username" layoutX="375.0" layoutY="320.0" prefHeight="25.0" prefWidth="150.0" text="bobletesteurfou@mail.com" />
+                <Label layoutX="380.0" layoutY="300.0" text="Adresse e-mail" textFill="#333333b2" />
+                <Label layoutX="380.0" layoutY="360.0" text="Mot de passe" textFill="#333333b2" />
+                <Label layoutX="429.0" layoutY="410.0" text="Mot de passe oublié ?" textFill="#b2b2b2">
+                    <font>
+                        <Font size="10.0" />
+                    </font>
+                </Label>
+                <Button fx:id="loginButton" layoutX="416.0" layoutY="448.0" mnemonicParsing="false" onAction="#userLogin" text="Connexion" />
+                <PasswordField fx:id="password" layoutX="375.0" layoutY="380.0" prefHeight="25.0" prefWidth="150.0" text="mdpdebob" />
+                <Label fx:id="wrongPassword" alignment="CENTER" contentDisplay="TEXT_ONLY" layoutX="350.0" layoutY="475.0" prefHeight="25.0" prefWidth="200.0" textFill="#c91212">
+                    <font>
+                        <Font name="System Bold" size="10.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+    </children>
 </VBox>

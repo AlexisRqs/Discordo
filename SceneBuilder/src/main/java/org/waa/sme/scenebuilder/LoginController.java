@@ -1,16 +1,18 @@
 package org.waa.sme.scenebuilder;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-
-import java.io.IOException;
-
+import org.waa.sme.utils.IdSingleton;
+import org.waa.sme.utils.Httphelper;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import java.io.*;
 
 public class LoginController {
+    //@Autowired
+    private Httphelper httpHelper;
 
     public LoginController() {
 
@@ -25,23 +27,43 @@ public class LoginController {
     @FXML
     private Button loginButton;
 
-
     public void userLogin(ActionEvent event) throws IOException {
         checkLogin();
     }
 
-    private void checkLogin() throws IOException {
+    /**
+     * Méthode qui permet de vérifier si les champs sont remplis,
+     * Puis verifie avec checkPassword si le mail/mdp est correct
+     */
+    private void checkLogin() {
         DiscordoApp m = new DiscordoApp();
-        if(username.getText().toString().equals("alexis") && password.getText().toString().equals("aze")) {
-            wrongPassword.setText("Connexion réussie !");
-            m.changeScene("Home.fxml");
 
-        } else if (username.getText().isEmpty() && password.getText().isEmpty()) {
+        String mail = username.getText();
+        String pwd = password.getText();
+
+        if (!mail.equals("") && !pwd.equals("")) {
+            try {
+                Long id = httpHelper.checkPassword(mail, pwd);
+                if (id != null) {
+                    IdSingleton.getInstance().setId(id);
+                    System.out.println("NOUS VOILA ICI VIVANT VAILLANT :"+id);
+                    m.changeScene("Home.fxml");
+                }
+                else {wrongPassword.setText("Mauvais mail/mdp");}
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else if (mail.equals("") && pwd.equals("")) {
             wrongPassword.setText("Veuillez remplir les champs");
         }
-
         else {
-            wrongPassword.setText("Identifiant ou mot de passe incorrect");
+            if(mail.equals("")) {
+                wrongPassword.setText("Veuillez saisir une adresse e-mail");
+            }
+            if(pwd.equals("")) {
+                wrongPassword.setText("Veuillez saisir un mot de passe");
+            }
         }
     }
+
 }
