@@ -74,7 +74,7 @@ public class DiscordoController implements Initializable {
     @FXML
     private ListView<String> vueListeAmi;
 
-    String[] amis = {"test", "test2"};
+    String[] amis = {"Bob le testeur fou", "Babar", "Antoine Daniel (le YouTuber)", "Patrick Sébastien", "Jotaro Kujo", "le mec de Halo"};
 
     String selectionAmi;
 
@@ -91,6 +91,7 @@ public class DiscordoController implements Initializable {
             }
         });
     }
+
     //ObservableList<String> items = FXCollections.observableArrayList (
     //        "Single", "Double", "Suite", "Family App");
     //list.setItems(items);

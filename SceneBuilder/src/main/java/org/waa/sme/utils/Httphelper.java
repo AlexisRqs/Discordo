@@ -71,8 +71,6 @@ public class Httphelper {
         return list;
     }
 
-
-
     /*public static List<String> loadListeAmis(Long id) throws IOException {
         try {
             URL url = new URL(debutURL+"users"+id+"/listeAmis");
