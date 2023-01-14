@@ -1,5 +1,7 @@
 package org.waa.sme.scenebuilder;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
 import javafx.scene.control.TextField;
@@ -8,11 +10,14 @@ import org.waa.sme.utils.IdSingleton;
 import org.waa.sme.utils.Httphelper;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.fxml.Initializable;
+import java.util.ResourceBundle;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import java.util.List;
+import java.net.URL;
 
-public class DiscordoController {
+public class DiscordoController implements Initializable {
 
     private Httphelper httpHelper;
 
@@ -32,7 +37,6 @@ public class DiscordoController {
         }
 
     }
-
 
 
     public void setFriendList(ObservableList listView) {
@@ -66,19 +70,27 @@ public class DiscordoController {
     @FXML
     private TextField searchMessage;
 
+    //Friend List view zone
     @FXML
-    private ListView friendList;
+    private ListView<String> vueListeAmi;
 
+    String[] amis = {"test", "test2"};
 
-    @FXML
-    protected void onemojiButtonClick() {
-        welcomeText.setText("Bienvenue sur Discordo !");
+    String selectionAmi;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        vueListeAmi.getItems().addAll(amis);
+        vueListeAmi.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+
+                selectionAmi = vueListeAmi.getSelectionModel().getSelectedItem();
+
+                friendLabel.setText(selectionAmi);
+            }
+        });
     }
-
-
-
-
-    ListView<String> list = new ListView<String>();
     //ObservableList<String> items = FXCollections.observableArrayList (
     //        "Single", "Double", "Suite", "Family App");
     //list.setItems(items);
