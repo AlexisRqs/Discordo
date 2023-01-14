@@ -97,7 +97,7 @@
 				{
 					"name": "ajout compte",
 					"request": {
-						"method": "PUT",
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
@@ -202,7 +202,19 @@
 							"name": "lsite Demande Amis",
 							"request": {
 								"method": "GET",
-								"header": []
+								"header": [],
+								"url": {
+									"raw": "localhost:9000/users/4/listeAmisEnAttente",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"users",
+										"4",
+										"listeAmisEnAttente"
+									]
+								}
 							},
 							"response": []
 						},
@@ -476,7 +488,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:9000/topic/2/getTopicId/1",
+							"raw": "localhost:9000/topic/2/getTopic/1",
 							"host": [
 								"localhost"
 							],
@@ -484,7 +496,7 @@
 							"path": [
 								"topic",
 								"2",
-								"getTopicId",
+								"getTopic",
 								"1"
 							]
 						}

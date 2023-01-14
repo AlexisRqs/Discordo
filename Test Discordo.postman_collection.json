@@ -309,6 +309,27 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "4 accepte 1",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:9000/users/4/accepterAmiEnAttente/1",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"users",
+								"4",
+								"accepterAmiEnAttente",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
