@@ -20,13 +20,10 @@ public class UsersController {
     @Autowired
     private UsersService usersService;
 
-    @PutMapping("/usersAjout")
+    // FROM PUT TO POST TTENTION LOOSER
+    @PostMapping("/usersAjout")
     public Users updateUsers(@RequestBody Users users) {
         System.out.println("update users");
-        return usersService.saveUsers(users);
-    }
-    @PostMapping("/users")
-    public Users createUsers(@RequestBody Users users) {
         return usersService.saveUsers(users);
     }
 
@@ -61,9 +58,4 @@ public class UsersController {
         System.out.println("email : " + email);
         return usersService.getUserMailBis(email);
     }
-
-    /*@GetMapping("/users/listeAmis")
-    public Iterable<Users> getListeAmis(@PathVariable Long idUsers) {
-        return (Iterable<Users>) usersService.getListeAmis(idUsers);
-    }*/
 }

@@ -231,8 +231,4 @@ public class ListeAmisService {
         listeAmisRepository.save(listeAmisBis);
         return "une demande à été envoyé";
     }
-
-
-
-
 }

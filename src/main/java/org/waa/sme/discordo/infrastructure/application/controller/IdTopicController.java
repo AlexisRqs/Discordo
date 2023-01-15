@@ -16,11 +16,13 @@ public class IdTopicController {
     public Topic setTopic(@PathVariable Long idUsers1, @PathVariable Long idUsers2) {
         return topicService.setTopic(idUsers1, idUsers2);
     }
-    @PutMapping("/topic/{idUsers1}/setMessageEnAttente/{idUsers2}")
+    // FROM PUT TO POST TTENTION LOOSER
+    @PostMapping("/topic/{idUsers1}/setMessageEnAttente/{idUsers2}")
     public void setMessageEnAttente(@PathVariable Long idUsers1, @PathVariable Long idUsers2, @RequestBody String message) {
         topicService.setMessageEnAttente(idUsers1, idUsers2, message);
     }
-    @PutMapping("/topic/{idUsers1}/setPath/{idUsers2}")
+    // FROM PUT TO POST TTENTION LOOSER
+    @PostMapping("/topic/{idUsers1}/setPath/{idUsers2}")
     public void setPath(@PathVariable Long idUsers1, @PathVariable Long idUsers2, @RequestBody String path) {
         topicService.setPath(idUsers1, idUsers2, path);
     }
@@ -29,10 +31,6 @@ public class IdTopicController {
     @GetMapping("/topic/{idUsers1}/getTopic/{idUsers2}")
     public Topic getTopic(@PathVariable Long idUsers1, @PathVariable Long idUsers2) {
         return topicService.getTopic(idUsers1, idUsers2);
-    }
-    @GetMapping("/topic/{idUsers1}/getTopicId/{idUsers2}")
-    public Long getTopicId(@PathVariable Long idUsers1, @PathVariable Long idUsers2) {
-        return topicService.getTopicId(idUsers1, idUsers2);
     }
     @GetMapping("/topic/{idUsers1}/getMessageEnAttente/{idUsers2}")
     public String getMessageEnAttente(@PathVariable Long idUsers1, @PathVariable Long idUsers2) {

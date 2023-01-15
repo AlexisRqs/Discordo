@@ -29,17 +29,11 @@ public class TopicService {
     @Autowired
     private ListeAmisRepository listeAmisRepository;
 
-
-    /*    private Long id;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "topic")
-    private List<ListeAmis> listeAmis;
-    @Column(name = "path")
-    private String path;
-    @Column(name = "msgEnAttente")
-    private String msgEnAttente;
-    */
-
-    //TOPIC
+    /**
+     * Céation d'un topic entre deux users avec en paramètre les ids des users
+     * @param topic
+     * @return
+     */
     public Topic setTopic(Long idDemandeur, Long idReceveur) {
         System.out.println("setTopic");
         List<ListeAmis> listAmis = listeAmisService.getListeAmisSpecifique(idDemandeur, idReceveur);
@@ -56,20 +50,17 @@ public class TopicService {
         return topic;
     }
 
+    /**
+     * Récupération d'un topic entre deux users avec en paramètre les ids des users
+     * @param topic
+     * @return
+     */
     public Topic getTopic(Long idDemandeur, Long idReceveur) {
         List<ListeAmis> listAmis = listeAmisService.getListeAmisSpecifique(idDemandeur, idReceveur);
         if (listAmis.get(0).getTopic() != null) {
             return listAmis.get(0).getTopic();
         } else {
             return setTopic(idDemandeur, idReceveur);
-        }
-    }
-    public Long getTopicId(Long idDemandeur, Long idReceveur) {
-        List<ListeAmis> listAmis = listeAmisService.getListeAmisSpecifique(idDemandeur, idReceveur);
-        if (listAmis.get(0).getTopic() != null) {
-            return listAmis.get(0).getTopic().getId();
-        } else {
-            return setTopic(idDemandeur, idReceveur).getId();
         }
     }
 

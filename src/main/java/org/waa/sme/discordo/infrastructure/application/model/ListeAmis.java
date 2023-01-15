@@ -33,11 +33,4 @@ public class ListeAmis {
     @JoinColumn(name = "id_topic")
     private Topic topic;
 
-
-    /*@ToString.Exclude
-    @JsonBackReference
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinTable(name = "IdTopic", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "id_lieeIdTopic"))
-    private IdTopic idTopic;*/
-
 }
