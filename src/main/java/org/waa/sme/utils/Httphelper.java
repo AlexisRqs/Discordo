@@ -102,6 +102,9 @@ public class Httphelper {
         }
         return null;
     }
+
+    //A Décommenter pour le test
+
     /*
     private void checkCreate() throws IOException {
         DiscordoApp m = new DiscordoApp();
