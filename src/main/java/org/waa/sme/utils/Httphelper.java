@@ -148,5 +148,45 @@ public class Httphelper {
             }
         }
     }
+
+    public static void sendPOST() throws IOException {
+        URL obj = new URL(POST_URL);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+        con.setDoOutput(true);
+        con.setRequestMethod("POST");
+        con.setRequestProperty("Content-Type", "application/json");
+        con.setDoOutput(true);
+
+        try (OutputStream os = con.getOutputStream()) {
+            System.out.println("jsonBody = " + jsonBody);
+            byte[] input = jsonBody.getBytes("utf-8");
+            os.write(input, 0, input.length);
+        }
+
+        int responseCode = con.getResponseCode();
+        System.out.println("POST Response Code : " + responseCode);
+
+        if (responseCode == HttpURLConnection.HTTP_OK) { //success
+            BufferedReader in = new BufferedReader(new InputStreamReader(
+                    con.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+
+            if (!response.toString().equals(null)) {
+                System.out.println("User ajouté");
+            } else {
+                System.out.println("User deja ajouté");
+            }
+
+        } else {
+            System.out.println("POST request not worked");
+        }
+    }
+
      */
 }
