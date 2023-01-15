@@ -76,35 +76,38 @@ public class Httphelper {
     }
 
     public static String createUser(String nom, String prenom, String mail, String pwd, String dateNaissance) throws IOException {
-        try {
+
             URL url = new URL(debutURL + "usersAjout");
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setDoOutput(true);
             con.setRequestMethod("POST");
             con.setRequestProperty("Content-Type", "application/json");
-            String jsonInputString = "{\"nom\":\"" + nom + "\",\"prenom\":\"" + prenom + "\",\"mail\":\"" + mail + "\",\"pwd\":\"" + pwd + "\",\"dateNaissance\":\"" + dateNaissance + "\"}";
+            String jsonInputString = "{\"nom\":\"" + nom + "\",\"prenom\":\"" + prenom + "\",\"mail\":\"" + mail + "\",\"password\":\"" + pwd + "\",\"date_Naissance\":\"" + dateNaissance + "\"}";
             System.out.println(jsonInputString);
 
-
-            byte[] jsonInputStringBytes = jsonInputString.getBytes();
-            con.setRequestProperty("Content-Length", Integer.toString(jsonInputStringBytes.length));
-            con.getOutputStream().write(jsonInputStringBytes);
-            int status = con.getResponseCode();
-            System.out.println("status:" + status);
-            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-            String inputLine;
-            StringBuffer content = new StringBuffer();
-            while ((inputLine = in.readLine()) != null) {
-                content.append(inputLine);
+            try (OutputStream os = con.getOutputStream()) {
+                System.out.println("jsonBody = " + jsonInputString);
+                byte[] input = jsonInputString.getBytes("utf-8");
+                os.write(input, 0, input.length);
             }
-            in.close();
-            con.disconnect();
-            System.out.println("mi sad" + content);
-            String stringtmp = content.toString();
-            return stringtmp;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
+
+            int responseCode = con.getResponseCode();
+            System.out.println("POST Response Code : " + responseCode);
+
+            if (responseCode == HttpURLConnection.HTTP_OK) { //success
+                BufferedReader in = new BufferedReader(new InputStreamReader(
+                        con.getInputStream()));
+                String inputLine;
+                StringBuffer response = new StringBuffer();
+
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+            } else {
+                System.out.println("POST request not worked");
+            }
+            return null;
     }
 }
+

@@ -41,6 +41,7 @@ public class RegisterController {
         String nom = lastName.getText();
         String mail = username.getText();
         String pwd = password.getText();
+        System.out.println(pwd);
         //String dateNaissance = birthDate.getDayCellFactory().toString();
         String dateNaissance = "le petit Jésus 3000 on s'en bat les roubignolles";
 
@@ -48,10 +49,8 @@ public class RegisterController {
             try {
                 String reponse = httpHelper.createUser(prenom, nom, mail, pwd, dateNaissance);
                 System.out.println(reponse);
-                if (reponse != null && !reponse.equals("")) {
-                    m.changeScene("Login.fxml");
-                }
-                else {wrongPassword.setText("Mail deja utilisé");}
+                 m.changeScene("Login.fxml");
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
