@@ -10,6 +10,11 @@ public class MessagePacket extends Packet {
     private final String message;
     private final Date sentAt;
 
+    /**
+     * Creates a new message packet
+     * @param sender
+     * @param message
+     */
     public MessagePacket(String sender, String message) {
         super(PacketType.MESSAGE);
         this.sender = sender;
@@ -17,14 +22,26 @@ public class MessagePacket extends Packet {
         this.sentAt = new Date();
     }
 
+    /**
+     * Gets the sender of the message
+     * @return
+     */
     public String getSender() {
         return sender;
     }
 
+    /**
+     * Gets the message
+     * @return
+     */
     public String getMessage() {
         return message;
     }
 
+    /**
+     * Gets the date the message was sent
+     * @return
+     */
     public Date getSentAt() {
         return sentAt;
     }
