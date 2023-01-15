@@ -70,7 +70,7 @@ public class DiscordoController implements Initializable {
     @FXML
     private ListView<String> vueListeAmi;
 
-    //String[] amis = {"Bob le testeur fou", "Babar", "Antoine Daniel (le YouTuber)", "Patrick Sébastien", "Jotaro Kujo", "le mec de Halo"};
+    String[] amis = {"Bob le testeur fou", "Babar", "Antoine Daniel (le YouTuber)", "Patrick Sébastien", "Jotaro Kujo", "le mec de Halo"};
     String[] addAll;
     String selectionAmi;
 

@@ -25,10 +25,15 @@ public class LoginController {
     @FXML
     private Label wrongPassword;
     @FXML
-    private Button loginButton;
+    private Button registerButton;
 
     public void userLogin(ActionEvent event) throws IOException {
         checkLogin();
+    }
+
+    public void userRegister() throws IOException {
+        DiscordoApp m = new DiscordoApp();
+        m.changeScene("Register.fxml");
     }
 
     /**

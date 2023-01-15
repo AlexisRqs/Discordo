@@ -72,13 +72,14 @@
                         <Font size="10.0" />
                     </font>
                 </Label>
-                <Button fx:id="loginButton" layoutX="416.0" layoutY="448.0" mnemonicParsing="false" onAction="#userLogin" text="Connexion" />
+                <Button fx:id="loginButton" layoutX="375.0" layoutY="447.0" mnemonicParsing="false" onAction="#userLogin" text="Connexion" />
                 <PasswordField fx:id="password" layoutX="375.0" layoutY="380.0" prefHeight="25.0" prefWidth="150.0" text="mdpdebob" />
                 <Label fx:id="wrongPassword" alignment="CENTER" contentDisplay="TEXT_ONLY" layoutX="350.0" layoutY="475.0" prefHeight="25.0" prefWidth="200.0" textFill="#c91212">
                     <font>
                         <Font name="System Bold" size="10.0" />
                     </font>
                 </Label>
+            <Button fx:id="registerButton" layoutX="450.0" layoutY="447.0" mnemonicParsing="false" onAction="#userRegister" text="Inscription" />
             </children>
         </AnchorPane>
     </children>
