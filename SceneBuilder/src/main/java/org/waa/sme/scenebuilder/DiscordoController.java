@@ -60,7 +60,7 @@ public class DiscordoController implements Initializable {
     @FXML
     private Label welcomeText;
 
-    //Search field zone
+    //Text & search field zone
     @FXML
     private TextField searchFriend;
     @FXML
@@ -69,6 +69,8 @@ public class DiscordoController implements Initializable {
     //Friend List view zone
     @FXML
     private ListView<String> vueListeAmi;
+    @FXML
+    private ListView<String> vueMessages;
 
     String[] amis = {"Bob le testeur fou", "Babar", "Antoine Daniel (le YouTuber)", "Patrick Sébastien", "Jotaro Kujo", "le mec de Halo"};
     String[] addAll;
