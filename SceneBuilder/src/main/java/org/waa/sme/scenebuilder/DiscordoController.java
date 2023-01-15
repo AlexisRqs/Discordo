@@ -2,8 +2,8 @@ package org.waa.sme.scenebuilder;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ListView;
 import org.waa.sme.utils.IdSingleton;
@@ -24,25 +24,21 @@ public class DiscordoController implements Initializable {
     private Long id = IdSingleton.getInstance().getId();
 
     public DiscordoController() throws IOException {
-        List bob = httpHelper.loadListeAmis(id);
+        List<String> bob = httpHelper.loadListeAmis(id);
         if (bob != null) {
-            ListView<String> listView = new ListView<>();
-            listView.setItems(FXCollections.observableList(bob));
+            vueListeAmi = new ListView<>();
+            vueListeAmi.setItems(FXCollections.observableList(bob));
 
-            ObservableList<String> data = FXCollections.observableArrayList(bob);
+            vueListeAmi.setItems(FXCollections.observableArrayList(bob));
+
 
             System.out.println(bob.get(0));
-            System.out.println(listView);
-            setFriendList(data);
+            System.out.println(vueListeAmi);
+            //setFriendList(data);
         }
 
     }
 
-
-    public void setFriendList(ObservableList listView) {
-        //friendList.getItems().addAll(listView);
-        //friendList.setItems(listView);
-    }
 
     //Buttons zone
     @FXML
@@ -74,13 +70,18 @@ public class DiscordoController implements Initializable {
     @FXML
     private ListView<String> vueListeAmi;
 
-    String[] amis = {"Bob le testeur fou", "Babar", "Antoine Daniel (le YouTuber)", "Patrick Sébastien", "Jotaro Kujo", "le mec de Halo"};
-
+    //String[] amis = {"Bob le testeur fou", "Babar", "Antoine Daniel (le YouTuber)", "Patrick Sébastien", "Jotaro Kujo", "le mec de Halo"};
+    String[] addAll;
     String selectionAmi;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        vueListeAmi.getItems().addAll(amis);
+
+        try {
+            vueListeAmi.getItems().addAll(httpHelper.loadListeAmis(id));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         vueListeAmi.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
@@ -90,6 +91,11 @@ public class DiscordoController implements Initializable {
                 friendLabel.setText(selectionAmi);
             }
         });
+    }
+
+    public void userLogOut() throws IOException {
+        DiscordoApp m = new DiscordoApp();
+        m.changeScene("Login.fxml");
     }
 
     //ObservableList<String> items = FXCollections.observableArrayList (
