@@ -9,6 +9,9 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @deprecated class pour le poc du peer to peer via NATS, au final pas retenu car ne respecte pas le cahiier des charges
+ */
 public class NatsConsumer extends Thread {
 
     private final Connection natsConnection;
