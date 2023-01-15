@@ -4,6 +4,13 @@ import java.io.*;
 import java.util.Base64;
 
 public class EncoderPacket {
+
+    /**
+     * Encodes a packet to a string
+     * @param packet
+     * @return
+     * @throws IOException
+     */
     public String encode(Packet packet) throws IOException {
         ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
         ObjectOutputStream out = new ObjectOutputStream(byteOut);
@@ -12,6 +19,13 @@ public class EncoderPacket {
         return Base64.getEncoder().encodeToString(byteOut.toByteArray());
     }
 
+    /**
+     * Decodes a packet from a string
+     * @param encodedPacket
+     * @return
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public Packet decode(String encodedPacket) throws IOException, ClassNotFoundException {
         byte[] decodedBytes = Base64.getDecoder().decode(encodedPacket);
         ByteArrayInputStream byteIn = new ByteArrayInputStream(decodedBytes);
