@@ -74,7 +74,7 @@
                         <Font name="System Bold" size="10.0" />
                     </font>
                 </Label>
-            <Button fx:id="createButton" layoutX="372.0" layoutY="557.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Inscription" />
+            <Button fx:id="createButton" layoutX="372.0" layoutY="557.0" mnemonicParsing="false" onAction="#userCreation" prefHeight="25.0" prefWidth="150.0" text="Inscription" />
             <TextField fx:id="username" layoutX="375.0" layoutY="407.0" prefHeight="25.0" prefWidth="150.0" promptText="bobletesteurfou@mail.com" />
             <Label layoutX="381.0" layoutY="387.0" text="Adresse e-mail" textFill="#333333b2" />
             <TextField fx:id="lastName" layoutX="375.0" layoutY="355.0" prefHeight="25.0" prefWidth="150.0" promptText="Letesteurfou" />

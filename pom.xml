@@ -101,6 +101,11 @@
             <artifactId>autowire_2.11</artifactId>
             <version>0.2.6</version>
         </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20220924</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+
 import java.io.*;
 
 public class LoginController {
@@ -51,21 +52,21 @@ public class LoginController {
                 Long id = httpHelper.checkPassword(mail, pwd);
                 if (id != null) {
                     IdSingleton.getInstance().setId(id);
-                    System.out.println("NOUS VOILA ICI VIVANT VAILLANT :"+id);
+                    System.out.println("NOUS VOILA ICI VIVANT VAILLANT :" + id);
                     m.changeScene("Home.fxml");
+                } else {
+                    wrongPassword.setText("Mauvais mail/mdp");
                 }
-                else {wrongPassword.setText("Mauvais mail/mdp");}
             } catch (Exception e) {
                 e.printStackTrace();
             }
         } else if (mail.equals("") && pwd.equals("")) {
             wrongPassword.setText("Veuillez remplir les champs");
-        }
-        else {
-            if(mail.equals("")) {
+        } else {
+            if (mail.equals("")) {
                 wrongPassword.setText("Veuillez saisir une adresse e-mail");
             }
-            if(pwd.equals("")) {
+            if (pwd.equals("")) {
                 wrongPassword.setText("Veuillez saisir un mot de passe");
             }
         }
